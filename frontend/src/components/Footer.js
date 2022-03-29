@@ -1,8 +1,15 @@
 import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
 
 function Footer() {
     return (
-        <Footer>Footer</Footer>
+        <footer>
+            <Container>
+                <Row>
+                    <Col className="text-center py-3">Copyright &copy; Adey-Abeba</Col>
+                </Row>
+            </Container>
+        </footer>
     );
 }
 
