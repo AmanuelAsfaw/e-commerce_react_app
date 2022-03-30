@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Card, Col, Image, ListGroup, ListGroupItem, Row, Button } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import Rating from "../components/Rating";
-import products from "../products";
 
 function ProductScreen(props) {
     // access the parameter from current-url
@@ -18,7 +17,7 @@ function ProductScreen(props) {
         }
 
         fetchProducts();
-    },[]);
+    },[id]);
     
     return (
         <div>
