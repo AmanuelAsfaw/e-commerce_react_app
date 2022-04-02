@@ -1,20 +1,21 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { Card, Col, Image, ListGroup, ListGroupItem, Row, Button } from "react-bootstrap";
-import { API_URL } from "../actions/types"
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { detailProduct } from "../actions/productActions";
 import Rating from "../components/Rating";
 
 function ProductScreen(props) {
     // access the parameter from current-url
     const { id } = useParams();
+    const dispatch = useDispatch();
 
-    const [product, setProduct] = useState({});
+    const { error, loading, product } = useSelector(state => state.productDetails);
+
 
     useEffect(() => {
-        async function fetchProducts() {
-            const { data } = await axios.get(API_URL+'/api/products/'+id)
-            setProduct(data);
+        function fetchProducts() {
+            dispatch(detailProduct(id));
         }
 
         fetchProducts();
