@@ -16,7 +16,7 @@ function HomeScreen() {
               dispatch(list);
         }
         dispatch_fun(listProducts);
-    },[]);
+    },[dispatch]);
 
     return (
         <div>

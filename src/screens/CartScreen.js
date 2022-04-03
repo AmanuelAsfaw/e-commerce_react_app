@@ -7,7 +7,7 @@ import Message from "../components/Message";
 
 function CartScreen() {
     const { id } = useParams();
-    const [ searchParams, setSearchParamss ] = useSearchParams();
+    const [ searchParams, ] = useSearchParams();
     const qty = searchParams.get('qty');
     let history = useNavigate();
     
