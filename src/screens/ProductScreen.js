@@ -3,6 +3,7 @@ import { Card, Col, Image, ListGroup, ListGroupItem, Row, Button, Form } from "r
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { detailProduct } from "../actions/productActions";
+import { API_URL } from "../actions/types";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Rating from "../components/Rating";
@@ -38,7 +39,7 @@ function ProductScreen(props) {
                     :            
                     <Row>
                         <Col md={6}>
-                            <Image src={product.image} alt={ product.name } />
+                            <Image src={API_URL+product.image} alt={ product.name } />
                         </Col>
                         <Col md={3}>
                             <ListGroup variant="flush">
