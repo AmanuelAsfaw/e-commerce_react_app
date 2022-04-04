@@ -3,6 +3,7 @@ import { Button, Card, Col, Form, Image, ListGroup, ListGroupItem, Row } from "r
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { addToCart, removeFromCart } from "../actions/cartActions";
+import { API_URL } from "../actions/types";
 import Message from "../components/Message";
 
 function CartScreen() {
@@ -47,7 +48,7 @@ function CartScreen() {
                                     <ListGroupItem key={item.product}>
                                         <Row>
                                             <Col md={2}>
-                                                <Image src={item.image} alt={item.name} fluid rounded/>
+                                                <Image src={API_URL+item.image} alt={item.name} fluid rounded/>
                                             </Col>
                                             <Col md={3}>
                                                 <Link to={'/product/'+item.product}>{item.name}</Link>
