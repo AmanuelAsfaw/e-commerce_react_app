@@ -1,8 +1,10 @@
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 import Header from "../Header";
+import store from "../../store";
 
 let container = null;
 beforeEach(() => {
@@ -21,9 +23,11 @@ afterEach(() => {
 it('has a text Adey-abeba', () => {
     act(() => {
       render(
-      <BrowserRouter>
-        <Header />
-      </BrowserRouter>, container);
+      <Provider store={store}>
+        <BrowserRouter>
+          <Header />
+        </BrowserRouter>
+      </Provider>, container);
     });
 
     expect(container.textContent).toContain("Adey-Abeba");
