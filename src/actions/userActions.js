@@ -1,6 +1,7 @@
-import { USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS } from "./types"
+import axios from "axios";
+import { API_URL, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS } from "./types"
 
-export const login = (email, password) => async (dispatch) => {
+export const loginAction = (email, password) => async (dispatch) => {
     try{
         dispatch({ type: USER_LOGIN_REQUEST });
 
@@ -10,8 +11,8 @@ export const login = (email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.get(
-            API_URL+'/api/users/login/',
+        const { data } = await axios.post(
+            API_URL + '/api/users/token/',
             {
                 'username': email,
                 'password': password

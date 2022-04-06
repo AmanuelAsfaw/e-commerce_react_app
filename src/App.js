@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
+import LoginScreen from './screens/LoginScreen';
 import ProductScreen from './screens/ProductScreen';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path='/' element={<HomeScreen/>}/>
             <Route path='/product/:id' element={<ProductScreen/>}/>
+            <Route path='/login' element={<LoginScreen/>}/>
             <Route path="/cart">
               <Route index element={<CartScreen />} />
               <Route path=":id" element={<CartScreen />} />
