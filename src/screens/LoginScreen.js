@@ -22,7 +22,8 @@ function LoginScreen() {
 
     useEffect(() => {
         if (userInfo) {
-            history(redirect? redirect : '')
+            console.log('redirect : '+ redirect)
+            history(redirect? redirect : '/')
         }
     }, [ history, userInfo, redirect ])
 
