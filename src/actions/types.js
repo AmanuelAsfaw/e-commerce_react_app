@@ -1,4 +1,5 @@
 export const API_URL = 'https://amanuelasfaw.pythonanywhere.com';
+// export const API_URL = 'http://127.0.0.1:8000';
 
 export const PRODUCT_LIST_REQUEST = 'PRODUCT_LIST_REQUEST';
 
@@ -29,3 +30,9 @@ export const USER_REGISTER_REQUEST = 'USER_REGISTER_REQUEST';
 export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS';
 
 export const USER_REGISTER_FAIL = 'USER_REGISTER_FAIL';
+
+export const USER_DETAILS_REQUEST = 'USER_DETAILS_REQUEST';
+
+export const USER_DETAILS_SUCCESS = 'USER_DETAILS_SUCCESS';
+
+export const USER_DETAILS_FAIL = 'USER_DETAILS_FAIL';
