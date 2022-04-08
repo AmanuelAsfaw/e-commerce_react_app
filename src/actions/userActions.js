@@ -53,7 +53,7 @@ export const registerAction = (name, email, password) => async (dispatch) => {
         }
 
         const { data } = await axios.post(
-            'http://127.0.0.1:8000' + '/api/users/register/',
+            API_URL + '/api/users/register/',
             {
                 'name': name,
                 'email': email,
