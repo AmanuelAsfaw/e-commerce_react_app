@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL, USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_RESET, USER_DETAILS_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_UPDATE_PROFILE_FAIL, USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_SUCCESS } from "./types"
+import { API_URL, CART_RESET_ITEMS, USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_RESET, USER_DETAILS_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_UPDATE_PROFILE_FAIL, USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_SUCCESS } from "./types"
 
 export const loginAction = (email, password) => async (dispatch) => {
     try{
@@ -36,6 +36,7 @@ export const loginAction = (email, password) => async (dispatch) => {
 
 export const logoutAction = () => (dispatch) => {
     localStorage.removeItem('userInfo')
+    localStorage.removeItem('cartItems')
     
     dispatch({ 
         type: USER_LOGOUT
@@ -43,6 +44,10 @@ export const logoutAction = () => (dispatch) => {
     
     dispatch({ 
         type: USER_DETAILS_RESET
+    })
+    
+    dispatch({ 
+        type: CART_RESET_ITEMS
     })
 } 
 
