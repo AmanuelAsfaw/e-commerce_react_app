@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { Button, Col, Form, FormGroup, FormLabel, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom"
-import { getUserDetails } from "../actions/userActions";
+import { USER_UPDATE_PROFILE_RESET } from "../actions/types";
+import { getUserDetails, updateUserProfileAction } from "../actions/userActions";
+import Message from "../components/Message";
 
 function ProfileScreen() {
     let history = useNavigate()
@@ -22,19 +24,23 @@ function ProfileScreen() {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
 
+    const userUpdateProfile = useSelector(state => state.userUpdateProfile);
+    const { success } = userUpdateProfile
+
     useEffect(() => {
         if (!userInfo) {
             console.log('redirect to login');
             history('/login')
         }else {
-            if (!user || !user.name){
-                dispatch(getUserDetails(name, email, password))
+            if (!user || !user.name || success){
+                dispatch({ type: USER_UPDATE_PROFILE_RESET})
+                dispatch(getUserDetails())
             }else{
                 setName(user.name)
                 setEmail(user.email)
             }
         }
-    }, [ dispatch, history, userInfo, user ])
+    }, [ dispatch, history, userInfo, user, success ])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -42,7 +48,13 @@ function ProfileScreen() {
         if (password !== confirmPassword) {
             setMessage('Passwords do not match')
         }else{
-            console.log('Updating ... profile');
+            setMessage('') 
+            dispatch(updateUserProfileAction({
+                id: user._id,
+                name: name,
+                email: email,
+                password: password
+            }))
         }        
     }
 
@@ -50,7 +62,7 @@ function ProfileScreen() {
         <Row>
             <Col md={3}>
                 <h2>User Profile</h2>
-                
+                {message && <Message variant='danger'>{message}</Message>}
                 <Form onSubmit={submitHandler}>
                     <FormGroup controlId="name">
                         <FormLabel>Name</FormLabel>
@@ -79,7 +91,6 @@ function ProfileScreen() {
                     <FormGroup controlId="password">
                         <FormLabel>Password</FormLabel>
                         <Form.Control
-                            required
                             type="password"
                             placeholder="Enter Password"
                             value={password}
@@ -91,7 +102,6 @@ function ProfileScreen() {
                     <FormGroup controlId="passwordConfirm">
                         <FormLabel>Password</FormLabel>
                         <Form.Control
-                            required
                             type="password"
                             placeholder="Confirm Password"
                             value={confirmPassword}

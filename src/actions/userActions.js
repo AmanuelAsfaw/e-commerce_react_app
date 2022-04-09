@@ -78,23 +78,20 @@ export const registerAction = (name, email, password) => async (dispatch) => {
     }
 }
 
-export const getUserDetails = (id) => async (dispatch, getState) => {
+export const getUserDetails = () => async (dispatch, getState) => {
     try{
         dispatch({ type: USER_DETAILS_REQUEST });
 
         const { userLogin: {userInfo }}= getState()
-        console.log(userInfo)
-        console.log(userInfo.access)
-        console.log(userInfo.token === userInfo.refresh)
         const config = {
             headers: {
                 'Content-type': 'application/json',
-                'Authorization': 'Bearer '+userInfo.access
+                'Authorization': 'Bearer '+userInfo.token
             }
         }
 
         const { data } = await axios.get(
-            API_URL + '/api/users/profile',
+            API_URL + '/api/users/profile/',
             config
         ); 
 
@@ -118,7 +115,7 @@ export const updateUserProfileAction = (user) => async (dispatch, getState) => {
         const config = {
             headers: {
                 'Content-type': 'application/json',
-                'Authorization': 'Bearer '+userInfo.access
+                'Authorization': 'Bearer '+userInfo.token
             }
         }
 
