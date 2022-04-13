@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Button, Card, Col, Form, Image, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { createSearchParams, Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { addToCart, removeFromCart } from "../actions/cartActions";
 import { API_URL } from "../actions/types";
 import Message from "../components/Message";
@@ -29,8 +29,12 @@ function CartScreen() {
     }
     
     const checkoutHandler = () => {
-        console.log('redirect to shipping');
-        history('/login?redirect=shipping')
+        let params = {redirect: 'shipping'}
+        const newLocal = createSearchParams(params);
+        history({
+            pathname: '/login',
+            search: `?${newLocal}`
+        })
     }
     return (
         <Row>
