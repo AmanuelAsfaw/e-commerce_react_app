@@ -15,7 +15,7 @@ function ProfileScreen() {
     const [message, setMessage] = useState('');
     
     const [searchParams, ] = useSearchParams();
-    const redirect = searchParams.get('redirect');
+    // const redirect = searchParams.get('redirect');
     const dispatch = useDispatch();
 
     const userDetails = useSelector(state => state.userDetails);
