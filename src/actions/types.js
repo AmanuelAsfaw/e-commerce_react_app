@@ -1,5 +1,5 @@
-// export const API_URL = 'https://amanuelasfaw.pythonanywhere.com';
-export const API_URL = 'http://127.0.0.1:8000';
+export const API_URL = 'https://amanuelasfaw.pythonanywhere.com';
+// export const API_URL = 'http://127.0.0.1:8000';
 
 export const PRODUCT_LIST_REQUEST = 'PRODUCT_LIST_REQUEST';
 
@@ -52,3 +52,9 @@ export const USER_UPDATE_PROFILE_RESET = 'USER_UPDATE_PROFILE_RESET';
 export const CART_SAVE_SHIPPING_ADDRESS = 'CART_SAVE_SHIPPING_ADDRESS';
 
 export const CART_SAVE_PAYMENT_METHOD = 'CART_SAVE_PAYMENT_METHOD';
+
+export const ORDER_CREATE_REQUEST = 'ORDER_CREATE_REQUEST';
+
+export const ORDER_CREATE_SUCCESS = 'ORDER_CREATE_SUCCESS';
+
+export const ORDER_CREATE_FAIL = 'ORDER_CREATE_FAIL';
