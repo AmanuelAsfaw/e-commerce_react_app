@@ -1,11 +1,12 @@
 import { Card } from "react-bootstrap";
+import { API_URL } from "../actions/types";
 import Rating from "./Rating";
 
 function Product ({ product }) {
     return (
         <Card className="my-3 p-3 rounded">
             <a href={'/product/'+ product._id}>
-                <Card.Img src={ product.image }/>
+                <Card.Img src={ API_URL+ product.image }/>
             </a>
             <Card.Body>
                 <a href={'/product/'+ product._id}>
