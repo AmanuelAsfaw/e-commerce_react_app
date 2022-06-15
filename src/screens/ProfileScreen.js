@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Form, FormGroup, FormLabel, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useSearchParams } from "react-router-dom"
+import { useNavigate
+    // ,  useSearchParams 
+} from "react-router-dom"
 import { USER_UPDATE_PROFILE_RESET } from "../actions/types";
 import { getUserDetails, updateUserProfileAction } from "../actions/userActions";
 import Message from "../components/Message";
@@ -14,7 +16,7 @@ function ProfileScreen() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
     
-    const [searchParams, ] = useSearchParams();
+    // const [searchParams, ] = useSearchParams();
     // const redirect = searchParams.get('redirect');
     const dispatch = useDispatch();
 
